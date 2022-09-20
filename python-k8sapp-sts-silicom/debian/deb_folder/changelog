@@ -1,0 +1,5 @@
+python3-k8sapp-sts-silicom (1.0-1) unstable; urgency=medium
+
+  * Initial release.
+
+ --  Steven Webster <steven.webster@windriver.com>  Thu, 31 Aug 2022 08:40:22 +000

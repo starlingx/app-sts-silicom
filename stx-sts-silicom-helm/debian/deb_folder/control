@@ -1,0 +1,20 @@
+Source: stx-sts-silicom-helm
+Section: libs
+Priority: optional
+Maintainer: StarlingX Developers <starlingx-discuss@lists.starlingx.io>
+Build-Depends: debhelper-compat (= 13),
+ chartmuseum,
+ helm,
+ procps,
+ python3-k8sapp-sts-silicom,
+ python3-k8sapp-sts-silicom-wheels
+Standards-Version: 4.5.1
+Homepage: https://www.starlingx.io
+
+Package: stx-sts-silicom-helm
+Section: libs
+Architecture: any
+Depends: ${misc:Depends},
+ curl
+Description: StarlingX Sts-Silicom Helm Charts
+ This package contains helm charts for the Sts Silicom application.

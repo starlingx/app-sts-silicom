@@ -1,0 +1,12 @@
+---
+debname: stx-sts-silicom-helm
+debver: 1.0-1
+src_path: stx-sts-silicom-helm
+dl_files:
+  helm-charts-sts-silicom-6003ef8.tar.gz:
+    topdir: helm-charts
+    url: https://github.com/silicom-ltd/STS_HelmCharts/archive/6003ef8f21b9b643edb50ce3de1daef4e89e9bf4.tar.gz
+    md5sum: 472dd45fde1ce0ebb422b0e791f5fe01
+revision:
+  dist: $STX_DIST
+  PKG_GITREVCOUNT: true
