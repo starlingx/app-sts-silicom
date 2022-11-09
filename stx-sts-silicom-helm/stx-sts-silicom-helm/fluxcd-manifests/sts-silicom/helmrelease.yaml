@@ -7,9 +7,9 @@
 apiVersion: "helm.toolkit.fluxcd.io/v2beta1"
 kind: HelmRelease
 metadata:
-  name: stx-sts-silicom
+  name: sts-silicom
   labels:
-    chart_group: stx-sts-silicom-charts
+    chart_group: sts-silicom-charts
 spec:
   releaseName: sts-silicom 
   chart:
