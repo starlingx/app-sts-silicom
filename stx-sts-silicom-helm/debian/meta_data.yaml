@@ -9,4 +9,6 @@ dl_files:
     md5sum: 472dd45fde1ce0ebb422b0e791f5fe01
 revision:
   dist: $STX_DIST
-  PKG_GITREVCOUNT: true
+  GITREVCOUNT:
+    SRC_DIR: ${MY_REPO}/stx/app-sts-silicom
+    BASE_SRCREV: e63bc5371c914c6e0b7de149f3d6bc24bb3b0dc9

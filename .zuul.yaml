@@ -26,11 +26,11 @@
       - starlingx/update
       - starlingx/utilities
     files:
-      - python-k8sapp-sts-silicom/*
+      - python3-k8sapp-sts-silicom/*
     vars:
         tox_envlist: py39
         python_version: 3.9
-        tox_extra_args: -c python-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+        tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
 - job:
     name: stx-app-sts-silicom-upload-git-mirror
     parent: upload-git-mirror
@@ -55,10 +55,10 @@
       - starlingx/update
       - starlingx/utilities
     files:
-      - python-k8sapp-sts-silicom/*
+      - python3-k8sapp-sts-silicom/*
     vars:
       tox_envlist: pylint
-      tox_extra_args: -c python-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
 
 - secret:
     name: stx-app-sts-silicom-github-secret
