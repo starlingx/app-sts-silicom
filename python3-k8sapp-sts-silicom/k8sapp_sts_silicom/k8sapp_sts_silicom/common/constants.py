@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Wind River Systems, Inc.
+# Copyright (c) 2022-2023 Wind River Systems, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -12,3 +12,5 @@ HELM_NS_STS_SILICOM = 'sts-silicom'
 
 # Chart name
 HELM_CHART_STS_SILICOM = 'sts-silicom'
+
+HELM_COMPONENT_LABEL_STS_SILICOM = 'app.starlingx.io/component'

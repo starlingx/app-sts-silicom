@@ -1,11 +1,10 @@
 #
-# Copyright (c) 2022 Wind River Systems, Inc.
+# Copyright (c) 2022-2023 Wind River Systems, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
 
 from k8sapp_sts_silicom.common import constants as app_constants
-from sysinv.tests.helm.test_helm import HelmOperatorTestSuiteMixin
 
 from sysinv.tests.db import base as dbbase
 
@@ -26,7 +25,6 @@ class K8SAppStsSilicomAppMixin(object):
 class K8SAppStsSilicomControllerTestCase(K8SAppStsSilicomAppMixin,
                                          dbbase.BaseIPv6Mixin,
                                          dbbase.BaseCephStorageBackendMixin,
-                                         HelmOperatorTestSuiteMixin,
                                          dbbase.ControllerHostTestCase):
     pass
 
@@ -38,6 +36,5 @@ class K8SAppStsSilicomControllerTestCase(K8SAppStsSilicomAppMixin,
 # - sts-silicom app
 class K8SAppStsSilicomAIOTestCase(K8SAppStsSilicomAppMixin,
                                   dbbase.BaseCephStorageBackendMixin,
-                                  HelmOperatorTestSuiteMixin,
                                   dbbase.AIOSimplexHostTestCase):
     pass
