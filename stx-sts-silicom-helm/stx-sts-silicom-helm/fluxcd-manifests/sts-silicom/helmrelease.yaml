@@ -1,5 +1,5 @@
 #
-# Copyright (c) 2022 Wind River Systems, Inc.
+# Copyright (c) 2023 Wind River Systems, Inc.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -11,11 +11,11 @@ metadata:
   labels:
     chart_group: sts-silicom-charts
 spec:
-  releaseName: sts-silicom 
+  releaseName: sts-silicom
   chart:
     spec:
-      chart: sts-silicom 
-      version: 0.0.7
+      chart: sts-silicom
+      version: 0.0.12
       sourceRef:
         kind: HelmRepository
         name: stx-platform

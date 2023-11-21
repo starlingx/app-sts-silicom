@@ -8,7 +8,7 @@ export DEB_VERSION = $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 
 export RELEASE = $(shell echo $(DEB_VERSION) | cut -f 1 -d '-')
 export REVISION = $(shell echo $(DEB_VERSION) | cut -f 4 -d '.')
 
-export STS_SILICOM_PKG="helm-charts-sts-silicom-6003ef8.tar.gz"
+export STS_SILICOM_PKG="helm-charts-sts-silicom-727b7ca.tar.gz"
 export APP_NAME = sts-silicom
 export APP_VERSION = $(RELEASE)-$(REVISION)
 export APP_TARBALL_FLUXCD = $(APP_NAME)-$(APP_VERSION).tgz
@@ -27,7 +27,7 @@ override_dh_auto_build:
 	# Extract the sts-silicom chart
 	rm -rf fluxcd
 	mkdir -p fluxcd
-	tar -C fluxcd -xf helm-charts-sts-silicom-6003ef8.tar.gz
+	tar -C fluxcd -xf $(STS_SILICOM_PKG)
 
 	# Apply patches
 	cd fluxcd/helm-charts/ && patch --no-backup-if-mismatch --fuzz=0 -p1 < ../../files/0001-Fix-whitespace-chomping-in-services-manifest.patch
