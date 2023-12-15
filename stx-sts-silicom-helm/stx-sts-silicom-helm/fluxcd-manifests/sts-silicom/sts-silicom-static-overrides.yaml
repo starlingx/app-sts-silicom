@@ -9,7 +9,7 @@
 imagePullSecrets:
   - default-registry-key
 
-InstallRbac: true
+InstallRbac: false
 
 Images:
   Tsyncd: quay.io/silicom/tsyncd:2.1.3.6
