@@ -5,18 +5,22 @@
         - openstack-tox-linters
         - k8sapp-sts-silicom-tox-py39
         - k8sapp-sts-silicom-tox-pylint
+        - k8sapp-sts-silicom-tox-flake8
+        - k8sapp-sts-silicom-tox-metadata
     gate:
       jobs:
         - openstack-tox-linters
         - k8sapp-sts-silicom-tox-py39
         - k8sapp-sts-silicom-tox-pylint
+        - k8sapp-sts-silicom-tox-flake8
+        - k8sapp-sts-silicom-tox-metadata
     post:
       jobs:
         - stx-app-sts-silicom-upload-git-mirror
 
 - job:
     name: k8sapp-sts-silicom-tox-py39
-    parent: tox-py39
+    parent: openstack-tox-py39
     description: |
         Run py39 for sts-silicom app
     nodeset: debian-bullseye
@@ -25,12 +29,70 @@
       - starlingx/fault
       - starlingx/update
       - starlingx/utilities
+      - starlingx/root
     files:
       - python3-k8sapp-sts-silicom/*
     vars:
-        tox_envlist: py39
-        python_version: 3.9
         tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+        tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/upper-constraints.txt'
+
+- job:
+    name: k8sapp-sts-silicom-tox-metadata
+    parent: tox
+    description: |
+      Run metadata test for k8sapp_sts_silicom
+    nodeset: debian-bullseye
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/update
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: metadata
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/upper-constraints.txt'
+
+- job:
+    name: k8sapp-sts-silicom-tox-pylint
+    parent: tox
+    description: |
+      Run pylint test for k8sapp_sts_silicom
+    nodeset: debian-bullseye
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/update
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: pylint
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/upper-constraints.txt'
+
+- job:
+    name: k8sapp-sts-silicom-tox-flake8
+    parent: tox
+    description: |
+      Run flake8 test for k8sapp_sts_silicom
+    nodeset: debian-bullseye
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/update
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: flake8
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/upper-constraints.txt'
+
 - job:
     name: stx-app-sts-silicom-upload-git-mirror
     parent: upload-git-mirror
@@ -44,21 +106,6 @@
         secret: stx-app-sts-silicom-github-secret2
         pass-to-parent: true
 
-- job:
-    name: k8sapp-sts-silicom-tox-pylint
-    parent: tox
-    description: |
-      Run pylint test for k8sapp_sts_silicom
-    required-projects:
-      - starlingx/config
-      - starlingx/fault
-      - starlingx/update
-      - starlingx/utilities
-    files:
-      - python3-k8sapp-sts-silicom/*
-    vars:
-      tox_envlist: pylint
-      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
 
 - secret:
     name: stx-app-sts-silicom-github-secret2
