@@ -48,8 +48,6 @@
       - starlingx/update
       - starlingx/utilities
       - starlingx/root
-    files:
-      - python3-k8sapp-sts-silicom/*
     vars:
       tox_envlist: metadata
       tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
