@@ -1,0 +1,3 @@
+0001-Fix-whitespace-chomping-in-services-manifest.patch
+0002-Add-imagePullSecrets-to-service-account.patch
+0003-Add-imagePullSecrets-to-daemonset.patch

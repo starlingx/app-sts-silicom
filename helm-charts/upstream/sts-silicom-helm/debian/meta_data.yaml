@@ -1,0 +1,14 @@
+---
+debname: sts-silicom-helm
+debver: 0.0-15
+src_path: sts-silicom-helm
+dl_path:
+  name: helm-charts-sts-silicom-727b7ca.tar.gz
+  url: https://github.com/silicom-ltd/STS_HelmCharts/archive/727b7ca0afee06c1b93fec8ad518c6b43095e49d.tar.gz
+  sha256sum: f9af6997d39c1a9a4d2983a6b8162c1cab8768ca5d0b70c1b796bafd097c6621
+revision:
+  dist: $STX_DIST
+  stx_patch: 2
+  GITREVCOUNT:
+    SRC_DIR: ${MY_REPO}/stx/app-sts-silicom/helm-charts/upstream/sts-silicom-helm
+    BASE_SRCREV: 16db7b80ad66352405ccf053f1363789f8ad7fb3
