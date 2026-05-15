@@ -7,6 +7,13 @@
         - k8sapp-sts-silicom-tox-pylint
         - k8sapp-sts-silicom-tox-flake8
         - k8sapp-sts-silicom-tox-metadata
+        - k8sapp-sts-silicom-tox-coverage
+        - k8sapp-sts-silicom-tox-security
+        - k8sapp-sts-silicom-tox-coverage-trixie
+        - k8sapp-sts-silicom-tox-security-trixie
+        - k8sapp-sts-silicom-tox-flake8-trixie
+        - k8sapp-sts-silicom-tox-pylint-trixie
+        - k8sapp-sts-silicom-tox-py313
     gate:
       jobs:
         - openstack-tox-linters
@@ -14,6 +21,13 @@
         - k8sapp-sts-silicom-tox-pylint
         - k8sapp-sts-silicom-tox-flake8
         - k8sapp-sts-silicom-tox-metadata
+        - k8sapp-sts-silicom-tox-coverage
+        - k8sapp-sts-silicom-tox-security
+        - k8sapp-sts-silicom-tox-coverage-trixie
+        - k8sapp-sts-silicom-tox-security-trixie
+        - k8sapp-sts-silicom-tox-flake8-trixie
+        - k8sapp-sts-silicom-tox-pylint-trixie
+        - k8sapp-sts-silicom-tox-py313
     post:
       jobs:
         - stx-app-sts-silicom-upload-git-mirror
@@ -86,6 +100,116 @@
       tox_envlist: flake8
       tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
       tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/upper-constraints.txt'
+
+- job:
+    name: k8sapp-sts-silicom-tox-coverage
+    parent: tox
+    description: |
+      Run coverage analysis for k8sapp_sts_silicom
+    nodeset: debian-bullseye
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: coverage
+
+- job:
+    name: k8sapp-sts-silicom-tox-security
+    parent: tox
+    description: |
+      Run security analysis for k8sapp_sts_silicom
+    nodeset: debian-bullseye
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: security
+
+- job:
+    name: k8sapp-sts-silicom-tox-py313
+    parent: openstack-tox
+    description: |
+      Run py313 for k8sapp_sts_silicom (Trixie)
+    nodeset: debian-trixie-8GB
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: py313
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/trixie/upper-constraints.txt'
+
+- job:
+    name: k8sapp-sts-silicom-tox-coverage-trixie
+    parent: tox
+    description: |
+      Run coverage analysis for k8sapp_sts_silicom (Trixie)
+    nodeset: debian-trixie-8GB
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: coverage-trixie
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+
+- job:
+    name: k8sapp-sts-silicom-tox-security-trixie
+    parent: tox
+    description: |
+      Run security analysis for k8sapp_sts_silicom (Trixie)
+    nodeset: debian-trixie-8GB
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: security-trixie
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+
+- job:
+    name: k8sapp-sts-silicom-tox-flake8-trixie
+    parent: tox
+    description: |
+      Run flake8 for k8sapp_sts_silicom (Trixie)
+    nodeset: debian-trixie-8GB
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: flake8-trixie
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/trixie/upper-constraints.txt'
+
+- job:
+    name: k8sapp-sts-silicom-tox-pylint-trixie
+    parent: tox
+    description: |
+      Run pylint for k8sapp_sts_silicom (Trixie)
+    nodeset: debian-trixie-8GB
+    required-projects:
+      - starlingx/config
+      - starlingx/fault
+      - starlingx/utilities
+      - starlingx/root
+    files:
+      - python3-k8sapp-sts-silicom/*
+    vars:
+      tox_envlist: pylint-trixie
+      tox_extra_args: -c python3-k8sapp-sts-silicom/k8sapp_sts_silicom/tox.ini
+      tox_constraints_file: '{{ ansible_user_dir }}/src/opendev.org/starlingx/root/build-tools/requirements/debian/trixie/upper-constraints.txt'
 
 - job:
     name: stx-app-sts-silicom-upload-git-mirror
